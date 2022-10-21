@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-blipsos-dev-233741-authRole",
+      "UnauthRoleArn": "arn:aws:iam::276101146656:role/amplify-blipsos-dev-233741-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::276101146656:role/amplify-blipsos-dev-233741-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-blipsos-dev-233741-deployment",
+      "UnauthRoleName": "amplify-blipsos-dev-233741-unauthRole",
+      "StackName": "amplify-blipsos-dev-233741",
+      "StackId": "arn:aws:cloudformation:us-east-1:276101146656:stack/amplify-blipsos-dev-233741/2cc13af0-5020-11ed-8114-12689b2b92c3",
+      "AmplifyAppId": "d1mxnqo5c0ofvq"
+    }
+  }
+}

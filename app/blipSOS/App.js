@@ -25,6 +25,11 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import awsconfig from './aws-exports';
+import { getAllUsers, getUser } from './graphql/queries';
+import { updateUserName } from './graphql/mutations';
+Amplify.configure(awsconfig);
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -61,6 +66,10 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  console.log('before test')
+  testMutation()
+  // testQuery()
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -94,6 +103,57 @@ const App: () => Node = () => {
     </SafeAreaView>
   );
 };
+
+const testQuery = async () => {
+  console.log('test query')
+  const result = await API.graphql(graphqlOperation(getAllUsers, null))
+    .then(a => {
+      console.log('then query')
+      console.log(a.data)
+    })
+    .catch(err => {
+      console.log('catch query')
+      console.log(err)
+
+    });
+  // console.log(result)
+}
+
+const testQueryGetUser = async () => {
+  console.log('test query get user')
+  const result = await API.graphql(graphqlOperation(getUser, {email: 'aaaa'}))
+    .then(a => {
+      console.log('then query get user')
+      console.log(a.data)
+    })
+    .catch(err => {
+      console.log('catch query get user')
+      console.log(err)
+
+    });
+  // console.log(result)
+}
+
+const testMutation = async () => {
+  console.log('test mutation')
+  inp = {
+    email: 'aaaa',
+    name: 'test from appasdsadsadfsaaf'
+  }
+  console.log('input: ', inp)
+  const result = await API.graphql(graphqlOperation(updateUserName, inp))
+    .then(a => {
+      console.log('then mutation')
+      console.log(a.data)
+      testQueryGetUser()
+    })
+    .catch(err => {
+      console.log('catch mutation')
+      console.log(err)
+
+    });
+  // console.log(result)
+}
 
 const styles = StyleSheet.create({
   sectionContainer: {
