@@ -15,7 +15,6 @@ void gps_setup() {
 
 void gps_loop() {
     if (_serial_gps.available() > 0) {
-        gpsValid = true;
         if (_gps.encode(_serial_gps.read()))
             displayInfo();
     }
@@ -26,7 +25,7 @@ void gps_loop() {
 }
 
 void buildPacket(uint8_t txBuffer[10])
-{
+{    
     LatitudeBinary = ((_gps.location.lat() + 90) / 180.0) * 16777215;
     LongitudeBinary = ((_gps.location.lng() + 180) / 360.0) * 16777215;
     altitudeGps = _gps.altitude.meters();
@@ -64,6 +63,7 @@ void displayInfo()
 
     Serial.print(F("Location: "));
     if (_gps.location.isValid()) {
+        gpsValid = true;
         Serial.print(_gps.location.lat(), 6);
         Serial.print(F(","));
         Serial.print(_gps.location.lng(), 6);

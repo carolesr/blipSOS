@@ -1,0 +1,13 @@
+SELECT
+end_device_ids.device_id AS deviceId,
+'100' AS lat,
+'101' AS lon,
+get_dynamodb("UserTable", "deviceId", end_device_ids.device_id, "arn:aws:iam::276101146656:role/IoTtest").email AS email
+FROM "lorawan/#"
+
+{
+    "end_device_ids": {
+        "device_id": "a"
+    }
+}
+${name} SOLICITOU AJUDA atraves do dispositivo BlipSOS, ${name} pode estar em perigo ou passando por uma emergencia Suas coordenadas no momento do envio do SOS sao: (${lat},${lon})

@@ -46,6 +46,4 @@ void loop() {
             Serial.println("TRANSMITTED");
         }
     }
-    else
-        Serial.println("GPS not valid yet");
 }
