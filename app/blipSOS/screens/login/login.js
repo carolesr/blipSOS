@@ -48,7 +48,7 @@ const LoginScreen = props => {
                 <View style={styles.textContainer}>
                     <TouchableOpacity activeOpacity={0.4}  onPress={() => {
                             console.log('login')  
-                            props.navigation.push('home');
+                            props.navigation.push('tab');
                         }}>
                         <Text style={styles.text}>login</Text>
                     </TouchableOpacity>

@@ -4,21 +4,21 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { colors } from './../../assets/colors'
 import styles from './styles'
 
-const HomeScreen = props => {
+const InfoScreen = props => {
 
     return (
         <View elevation={30} style={styles.screen}>
             <View style={styles.container}>
 
             <View>
-                <Text>AAAAAAAAAAAAAAAAAAAAAAAAAAAA HOME SCREEN</Text>
+                <Text>AAAAAAAAAAAAAAAAAAAAAAAAAAAA INFO SCREEN</Text>
             </View>
 
             <View>
                 <TouchableOpacity activeOpacity={0.4}  onPress={() => {
                         console.log('home')  
                     }}>
-                    <Text style={{'color': 'black'}}>home</Text>
+                    <Text style={{'color': 'black'}}>info</Text>
                 </TouchableOpacity>
             </View>
             
@@ -36,4 +36,4 @@ const HomeScreen = props => {
     );
 }
 
-export default HomeScreen;
+export default InfoScreen;

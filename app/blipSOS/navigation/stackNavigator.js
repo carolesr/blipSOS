@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// import TabNavigator from './TabNavigator'
+import TabNavigator from './tabNavigator'
 import LoginScreen from '../screens/login/login'
 import HomeScreen from '../screens/home/home'
 
@@ -16,8 +16,8 @@ const StackNavigator = props => {
                 component={ LoginScreen }
             />
             <Stack.Screen
-                name="home"
-                component={ HomeScreen }
+                name="tab"
+                component={ TabNavigator }
             />
         </Stack.Navigator>
     )
