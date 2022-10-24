@@ -18,6 +18,23 @@ export const createUser = /* GraphQL */ `
     }
   }
 `;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser($email: String!, $name: String!, $phone: String!) {
+    updateUser(email: $email, name: $name, phone: $phone) {
+      name
+      email
+      phone
+      deviceId
+      message
+      contacts {
+        name
+        phone
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const updateUserName = /* GraphQL */ `
   mutation UpdateUserName($email: String!, $name: String!) {
     updateUserName(email: $email, name: $name) {
