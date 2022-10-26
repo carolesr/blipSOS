@@ -7,8 +7,8 @@ export const createUser = /* GraphQL */ `
       name
       email
       phone
+      password
       deviceId
-      message
       contacts {
         name
         phone
@@ -19,47 +19,18 @@ export const createUser = /* GraphQL */ `
   }
 `;
 export const updateUser = /* GraphQL */ `
-  mutation UpdateUser($email: String!, $name: String!, $phone: String!) {
-    updateUser(email: $email, name: $name, phone: $phone) {
+  mutation UpdateUser(
+    $email: String!
+    $name: String!
+    $phone: String!
+    $password: String!
+  ) {
+    updateUser(email: $email, name: $name, phone: $phone, password: $password) {
       name
       email
       phone
+      password
       deviceId
-      message
-      contacts {
-        name
-        phone
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUserName = /* GraphQL */ `
-  mutation UpdateUserName($email: String!, $name: String!) {
-    updateUserName(email: $email, name: $name) {
-      name
-      email
-      phone
-      deviceId
-      message
-      contacts {
-        name
-        phone
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUserPhone = /* GraphQL */ `
-  mutation UpdateUserPhone($email: String!, $phone: String!) {
-    updateUserPhone(email: $email, phone: $phone) {
-      name
-      email
-      phone
-      deviceId
-      message
       contacts {
         name
         phone
@@ -75,25 +46,8 @@ export const updateUserDevice = /* GraphQL */ `
       name
       email
       phone
+      password
       deviceId
-      message
-      contacts {
-        name
-        phone
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUserMessage = /* GraphQL */ `
-  mutation UpdateUserMessage($email: String!, $message: String!) {
-    updateUserMessage(email: $email, message: $message) {
-      name
-      email
-      phone
-      deviceId
-      message
       contacts {
         name
         phone
@@ -109,8 +63,8 @@ export const updateUserContacts = /* GraphQL */ `
       name
       email
       phone
+      password
       deviceId
-      message
       contacts {
         name
         phone

@@ -16,7 +16,6 @@ const InfoScreen = props => {
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [deviceId, setDeviceId] = useState('');
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         getUser('aaaa') 
@@ -27,7 +26,7 @@ const InfoScreen = props => {
         setName(user.name)
         setEmail(user.email)
         setPhone(user.phone)
-        setPassword('akjsfkjsaf')
+        setPassword(user.password)
         setDeviceId(user.deviceId)
     }, [user])
 
@@ -49,7 +48,8 @@ const InfoScreen = props => {
         const input = {
             email: email,
             name: name,
-            phone: phone
+            phone: phone,
+            password: password
         }
         api.updateUser(input)
         .then(result => {
@@ -135,7 +135,7 @@ const InfoScreen = props => {
                     </View>
                 </View>
 
-                <View style={styles.buttonContainer}>
+                <View style={styles.saveContainer}>
                     <TouchableOpacity activeOpacity={0.4}  onPress={() => {
                             console.log('save')
                             save()

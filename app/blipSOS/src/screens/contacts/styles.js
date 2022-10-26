@@ -15,19 +15,30 @@ const styles = StyleSheet.create({
         paddingBottom: '35%',
         height: '100%',
     },
+    infoContainer: {
+        // flex: 20,
+        maxHeight: '75%',
+        
+    },
     titleContainer: {
         alignSelf: 'center',
         flexDirection: 'row',
-        marginBottom: 30
+        marginBottom: 20
     },
     icon: {
         paddingTop: 3,
-        paddingLeft: 15
+        paddingLeft: 15,
+        paddingRight: 10,
+        // alignSelf: 'center'
+    },
+    scrollContainer: {
+        flexGrow: 1
     },
     text: {
         color: colors.darkRed,
         fontWeight: 'bold',
         fontSize: 20,
+        alignSelf: 'center'
     },
     smallText: {
         color: colors.darkRed,
@@ -35,43 +46,23 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginBottom: 5,
     },
-    infoContainer: {
+    addContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 20,
+        margin: 10
     },
-    readOnlyContainer: {
-        flex: 2.5,
+    buttonContainer: {
+        flexDirection: 'row',
         justifyContent: 'center',
-        height: 40,
-        opacity: 0.3
-    },
-    readOnlyText: {
-        color: colors.darkRed,
-        fontWeight: 'bold',
-        fontSize: 14,
     },
     textContainer: {
         flex: 1,
         alignSelf: 'center',
     },
-    inputContainer: {
-        flex: 2.5,
-        height: 40,
-        elevation: 2,
-        backgroundColor: colors.white,
-        borderRadius: 5,
-        borderBottomWidth: 2,
-        borderBottomColor: colors.darkRed,
-    },
-    input: {
-        width: '100%',
-        fontWeight: 'bold',        
-        color: colors.lightDarkRed
-    },
     saveContainer: {
-        alignSelf: 'center',
-        margin: 20,
+        // flex: 1,
+        // marginBottom: 20,
+        // borderWidth: 2,
+        // borderColor: 'red'
     }
 });
 

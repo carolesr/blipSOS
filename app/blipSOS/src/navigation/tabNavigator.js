@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import HomeScreen from '../screens/home/home'
 import InfoScreen from '../screens/info/info'
+import ContactsScreen from '../screens/contacts/contacts'
 import Header from '../components/header/header'
 import { colors } from '../assets/colors'
 
@@ -48,7 +49,7 @@ const TabNavigator = props => {
             />
             <Tab.Screen
                 name="contacts"
-                children={() => <HomeScreen /> }
+                children={() => <ContactsScreen /> }
                 options={ screenOptions('phone', 'contacts') }
             />
             <Tab.Screen

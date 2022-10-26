@@ -7,8 +7,8 @@ export const getUser = /* GraphQL */ `
       name
       email
       phone
+      password
       deviceId
-      message
       contacts {
         name
         phone
@@ -24,14 +24,24 @@ export const getAllUsers = /* GraphQL */ `
       name
       email
       phone
+      password
       deviceId
-      message
       contacts {
         name
         phone
       }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const getSosHistory = /* GraphQL */ `
+  query GetSosHistory($deviceId: String!) {
+    getSosHistory(deviceId: $deviceId) {
+      id
+      deviceId
+      location
+      datetime
     }
   }
 `;
