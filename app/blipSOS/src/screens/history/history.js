@@ -30,7 +30,7 @@ const HistoryScreen = props => {
                     'datetime': item.datetime
                 }
             })
-            const sorted = sos.sort((a, b) => b.datetime - a.datetime)
+            const sorted = sos.sort((a, b) => new Date(b.datetime) - new Date(a.datetime))
             listRef.current = sos
             setListSOS(sos)
         }
@@ -48,28 +48,6 @@ const HistoryScreen = props => {
         });
     }
 
-    const save = () => {
-        // const input = {
-        //     email: email,
-        //     contacts: listContacts.map(c => {
-        //         return {
-        //             name: c.name,
-        //             phone: c.phone
-        //         }
-        //     })
-        // }
-        // api.updateUserContacts(input)
-        // .then(result => {
-        //     console.log('api then mutation')
-        //     console.log(result.data)
-        // })
-        // .catch(err => {
-        //     console.log('error update user')
-        //     console.log(err)
-    
-        // });
-    }
-
     return (
         <View style={styles.screen}>
             <View style={styles.container}>
@@ -77,12 +55,12 @@ const HistoryScreen = props => {
                 <View style={styles.infoContainer}>
                     <View style={styles.titleContainer}>
                         <Text style={styles.text}>history of SOS</Text>
-                        <Icon style={styles.icon} name="home" size={20} color={colors.darkRed} />
+                        <Icon style={styles.icon} name="history" size={20} color={colors.darkRed} />
                     </View>
                     
                     {(listSOS.length > 0) ? (
-                    <View style={styles.scrollContainer}>
-                        <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true}>
+                    <View>
+                        <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true}>                            
                             {listSOS.map(sos => {
                                 return (
                                     <Sos
@@ -99,7 +77,7 @@ const HistoryScreen = props => {
                     </View>
                     ) : (
                         <View style={{alignItems: 'center'}}>
-                            <Text style={styles.smallText}>you don't have any sos et</Text>
+                            <Text style={styles.smallText}>you don't have any sos yet</Text>
                         </View>
                     )}                    
                 </View>

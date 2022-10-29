@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     infoContainer: {
-        // flex: 20,
         maxHeight: '75%',
         
     },
@@ -30,9 +29,6 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 10,
         // alignSelf: 'center'
-    },
-    scrollContainer: {
-        flexGrow: 1
     },
     text: {
         color: colors.darkRed,

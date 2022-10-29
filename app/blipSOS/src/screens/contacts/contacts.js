@@ -107,7 +107,7 @@ const ContactScreen = props => {
                     </View>
                     
                     {(listContacts.length > 0) ? (
-                    <View style={styles.scrollContainer}>
+                    <View>
                         <ScrollView showsVerticalScrollIndicator={true} persistentScrollbar={true}>
                             {listContacts.map(contact => {
                                 return (

@@ -16,8 +16,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     infoContainer: {
-        // flex: 20,
-        maxHeight: '75%',
+        maxHeight: '90%',
         
     },
     titleContainer: {
@@ -29,10 +28,7 @@ const styles = StyleSheet.create({
         paddingTop: 3,
         paddingLeft: 15,
         paddingRight: 10,
-        // alignSelf: 'center'
-    },
-    scrollContainer: {
-        flexGrow: 1
+        alignSelf: 'center'
     },
     text: {
         color: colors.darkRed,
@@ -46,24 +42,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginBottom: 5,
     },
-    addContainer: {
-        flexDirection: 'row',
-        margin: 10
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    textContainer: {
-        flex: 1,
-        alignSelf: 'center',
-    },
-    saveContainer: {
-        // flex: 1,
-        // marginBottom: 20,
-        // borderWidth: 2,
-        // borderColor: 'red'
-    }
 });
 
 export default styles;

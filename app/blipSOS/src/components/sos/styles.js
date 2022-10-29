@@ -3,63 +3,34 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../assets/colors'
 
 const styles = StyleSheet.create({
-    text: {
-        color: colors.darkRed,
-        fontWeight: 'bold',
-        fontSize: 20,
-        alignSelf: 'center'
-    },
-    smallText: {
-        color: colors.darkRed,
-        fontWeight: 'bold',
-        fontSize: 14,
-        marginBottom: 5,
-    },
-    contactContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    sosContainer: {
         margin: 10,
-        // marginTop: 0,
-        paddingTop: 15,
-        paddingBottom: 15,
-        paddingRight: 10,
-        paddingLeft: 10,
+        marginBottom: 15,
+        padding: 15,
         borderRadius: 5,
         elevation: 5,
         backgroundColor: colors.white,
     },
-    fieldsContainer: {
-        flex: 10,
+    mapContainer: {
+        flex: 2,
+        minHeight: 150,
 
     },
-    nameContainer: {
-        flexDirection: 'row',
-        marginBottom: 20,
-    },
-    phoneContainer: {
-        flexDirection: 'row',
+    map: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
     },
     textContainer: {
-        flex: 1,
+        paddingBottom: 10,
         alignSelf: 'center',
     },
-    inputContainer: {
-        flex: 3,
-        height: 40,
-        elevation: 2,
-        backgroundColor: colors.white,
-        borderRadius: 5,
-        borderBottomWidth: 2,
-        borderBottomColor: colors.darkRed,
-    },
-    input: {
-        width: '100%',
-        fontWeight: 'bold',        
-        color: colors.lightDarkRed
-    },
-    removeContainer: {
-        flex: 1,
-        alignItems: 'flex-end',
+    text: {
+        color: colors.darkRed,
+        fontWeight: 'bold',
+        fontSize: 18,
     },
 });
 
