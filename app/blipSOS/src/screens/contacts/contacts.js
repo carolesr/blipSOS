@@ -16,7 +16,7 @@ const ContactScreen = props => {
     const listRef = useRef(listContacts); 
 
     useEffect(() => {
-        getUser('aaaa') 
+        getUser(props.email) 
     }, [])
     
     useEffect(() => {

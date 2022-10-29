@@ -1,13 +1,17 @@
 
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsconfig from './../../aws-exports';
-import { getUser } from './../graphql/queries';
+import { getUser, getSosHistory } from './../graphql/queries';
 import { updateUser, updateUserContacts } from './../graphql/mutations';
 
 Amplify.configure(awsconfig);
 
 const getUserQuery = email => {
     return API.graphql(graphqlOperation(getUser, {email: email}))
+}
+
+const getSosHistoryQuery = email => {
+    return API.graphql(graphqlOperation(getSosHistory, {email: email}))
 }
 
 const updateUserMutation = input => {
@@ -21,7 +25,8 @@ const updateUserContactsMutation = input => {
 const api = {
     getUser: getUserQuery,
     updateUser: updateUserMutation,
-    updateUserContacts: updateUserContactsMutation
+    updateUserContacts: updateUserContactsMutation,
+    getSosHistory: getSosHistoryQuery
 }
 
   export default api

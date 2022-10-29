@@ -36,10 +36,11 @@ export const getAllUsers = /* GraphQL */ `
   }
 `;
 export const getSosHistory = /* GraphQL */ `
-  query GetSosHistory($deviceId: String!) {
-    getSosHistory(deviceId: $deviceId) {
+  query GetSosHistory($email: String!) {
+    getSosHistory(email: $email) {
       id
       deviceId
+      email
       location
       datetime
     }

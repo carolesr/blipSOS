@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../screens/home/home'
 import InfoScreen from '../screens/info/info'
 import ContactsScreen from '../screens/contacts/contacts'
+import HistoryScreen from '../screens/history/history'
 import Header from '../components/header/header'
 import { colors } from '../assets/colors'
 
@@ -20,7 +21,7 @@ const TabNavigator = props => {
     },
   }
 
-  const screenOptions = (icon, label, v = true) => {
+  const screenOptions = (icon, label) => {
     return {
         tabBarActiveTintColor: colors.white,
         tabBarInactiveBackgroundColor: colors.darkRed,
@@ -34,9 +35,6 @@ const TabNavigator = props => {
         header: () => (
             <Header />
         ),
-        bottomTabs: {
-            visible: false
-        }
     }
   }
 
@@ -44,24 +42,24 @@ const TabNavigator = props => {
         <Tab.Navigator screenOptions={ navigatorOptions }>
             <Tab.Screen
                 name="info"
-                children={() => <InfoScreen /> }
-                options={ screenOptions('user', 'my info', false)}
+                children={() => <InfoScreen email={props.route.params.email}/> }
+                options={ screenOptions('user', 'my info')}
             />
             <Tab.Screen
                 name="contacts"
-                children={() => <ContactsScreen /> }
+                children={() => <ContactsScreen email={props.route.params.email} /> }
                 options={ screenOptions('phone', 'contacts') }
             />
             <Tab.Screen
                 name="history"
-                children={() => <HomeScreen /> }
+                children={() => <HistoryScreen email={props.route.params.email} /> }
                 options={ screenOptions('history', 'history') }
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="settings"
                 children={() => <HomeScreen /> }
                 options={ screenOptions('cog', 'settings') }
-            />
+            /> */}
         </Tab.Navigator>
     )
 };

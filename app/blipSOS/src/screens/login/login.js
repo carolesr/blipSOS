@@ -10,7 +10,7 @@ const LoginScreen = props => {
         console.log('LOGIN SCREEN')
     })
 
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState('email@gmail.com');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -48,7 +48,7 @@ const LoginScreen = props => {
                 <View style={styles.textContainer}>
                     <TouchableOpacity activeOpacity={0.4}  onPress={() => {
                             console.log('login')  
-                            props.navigation.push('tab');
+                            props.navigation.push('tab', {email: email});
                         }}>
                         <Text style={styles.text}>login</Text>
                     </TouchableOpacity>

@@ -11,14 +11,14 @@ import styles from './styles'
 const InfoScreen = props => {
     
     const [user, setUser] = useState({});
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [deviceId, setDeviceId] = useState('');
 
     useEffect(() => {
-        getUser('aaaa') 
+        getUser(props.email) 
     }, [])
     
     useEffect(() => {
