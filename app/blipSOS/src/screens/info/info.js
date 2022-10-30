@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import api from './../../service/api'
@@ -9,15 +9,14 @@ import styles from './styles'
 
 const InfoScreen = props => {
     
-    // const [user, setUser] = useState({});
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [deviceId, setDeviceId] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
 
     useEffect(() => {
-        console.log('USE EFFECT INFO SCREEN')
         const user = props.user
         setName(user.name)
         setEmail(user.email)
@@ -111,19 +110,70 @@ const InfoScreen = props => {
                         <View style={styles.textContainer}>
                             <Text style={styles.smallText}>device id:</Text>
                         </View>
-                        <View style={styles.readOnlyContainer}>
+                        <View style={styles.readOnlyDeviceIdContainer}>
                             <Text style={styles.readOnlyText}>{deviceId}</Text>
+                        </View>
+                        <View style={styles.editButtonContainer}>
+                            <TouchableOpacity activeOpacity={0.4}  onPress={() => {
+                                    setModalVisible(!modalVisible);
+                                }}>
+                                <Text style={styles.editButtonText}>edit</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
 
                 <View style={styles.saveContainer}>
                     <TouchableOpacity activeOpacity={0.4}  onPress={() => {
-                            console.log('save')
                             save()
                         }}>
                         <Text style={styles.text}>save</Text>
                     </TouchableOpacity>
+                </View>
+
+                <View>
+                    <Modal
+                        animationType="fade"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                            setModalVisible(!modalVisible);
+                            }}
+                    >
+                        <View style={styles.modalContainer}>
+                            <View style={styles.modalHeaderContainer}>
+                                <View style={styles.modalHeaderText}>
+                                    <Text style={styles.text}>edit device id</Text>
+                                </View>
+                                <TouchableOpacity activeOpacity={0.4}  onPress={() => {
+                                        setModalVisible(!modalVisible);
+                                    }}>
+                                    <Icon style={styles.modalIcon} name="times" size={20} color={colors.darkRed} />
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.modalContentContainer}>
+                                <View style={styles.modalTextContainer}>
+                                    <Text style={[styles.smallText, {textAlign: 'center'}]}>type in here the id number from your device's box:</Text>
+                                </View>
+                                <View style={styles.modalInputContainer}>
+                                    <TextInput 
+                                        style={styles.input}
+                                        placeholder='device id'
+                                        placeholderTextColor={colors.lightRed}
+                                        textAlign={'center'}
+                                        onChangeText={t => {setDeviceId(t)}}
+                                    />
+                                </View>
+                            </View>
+                            <View style={styles.modalFooterContainer}>
+                                <TouchableOpacity activeOpacity={0.4}  onPress={() => {
+                                        setModalVisible(!modalVisible);
+                                    }}>
+                                    <Text style={styles.text}>ok</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
                 </View>
 
             </View>
