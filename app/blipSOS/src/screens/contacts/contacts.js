@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, ToastAndroid } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import api from './../../service/api'
@@ -16,35 +16,19 @@ const ContactScreen = props => {
     const listRef = useRef(listContacts); 
 
     useEffect(() => {
-        getUser(props.email) 
-    }, [])
-    
-    useEffect(() => {
-        if (user.contacts != undefined) {
-            const contacts = user.contacts.map((item, index) => {
-                return {
-                    'id': index,
-                    'name': item.name,
-                    'phone': item.phone,
-                }
-            })
-            listRef.current = contacts
-            setListContacts(contacts)
-        }
-    }, [user])
-
-    const getUser = email => {
-        api.getUser(email)
-        .then(result => {
-            setEmail(result.data.getUser.email)
-            setUser(result.data.getUser)
+        console.log('USE EFFECT CONTACTS SCREEN')
+        const user = props.user
+        setEmail(user.email)
+        const contacts = user.contacts.map((item, index) => {
+            return {
+                'id': index,
+                'name': item.name,
+                'phone': item.phone,
+            }
         })
-        .catch(err => {
-            console.log('error get user')
-            console.log(err)
-    
-        });
-    }
+        listRef.current = contacts
+        setListContacts(contacts)
+    }, [])
 
     const addContact = () => {
         const newId = listContacts.length ? listContacts.slice(-1)[0]['id'] + 1 || 0 : 0
@@ -90,7 +74,7 @@ const ContactScreen = props => {
             console.log(result.data)
         })
         .catch(err => {
-            console.log('error update user')
+            ToastAndroid.show('Error ' + error, ToastAndroid.SHORT)
             console.log(err)
     
         });

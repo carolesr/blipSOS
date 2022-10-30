@@ -12,54 +12,61 @@ import { colors } from '../assets/colors'
 
 const TabNavigator = props => {
 
-  const Tab = createBottomTabNavigator();
+    const Tab = createBottomTabNavigator();
 
-  const navigatorOptions = {
-    tabBarStyle: {
-      height: 60,
-      overflow:'hidden',
-    },
-  }
-
-  const screenOptions = (icon, label) => {
-    return {
-        tabBarActiveTintColor: colors.white,
-        tabBarInactiveBackgroundColor: colors.darkRed,
-        tabBarActiveBackgroundColor: colors.lightDarkRed,
-        tabBarLabel: () => (
-            <Text style={{ fontWeight: 'bold', color: colors.white, paddingBottom: 5 }}> {label} </Text>
-        ),
-        tabBarIcon: () => (
-            <Icon style={{ paddingTop: 5 }} name={icon} size={25} color={ colors.white } />
-        ),
-        header: () => (
-            <Header />
-        ),
+    const screenOptions = (icon, label) => {
+        return {
+            tabBarActiveTintColor: colors.white,
+            tabBarInactiveBackgroundColor: colors.darkRed,
+            tabBarActiveBackgroundColor: colors.lightDarkRed,
+            tabBarLabel: () => (
+                <Text style={{ fontWeight: 'bold', color: colors.white, paddingBottom: 5 }}> {label} </Text>
+            ),
+            tabBarIcon: () => (
+                <Icon style={{ paddingTop: 5 }} name={icon} size={25} color={ colors.white } />
+            ),
+            tabBarStyle: {
+                height: 60,
+                overflow:'hidden',
+            },
+            header: () => (
+                <Header  navigation={props.navigation}/>
+            ),
+        }
     }
-  }
 
     return (
-        <Tab.Navigator screenOptions={ navigatorOptions }>
+        <Tab.Navigator 
+            screenOptions={({ route }) => ({
+                tabBarButton: [
+                  "home",
+                ].includes(route.name)
+                  ? () => {
+                      return null;
+                    }
+                  : undefined,
+              })}
+            >
+            <Tab.Screen
+                name="home"
+                children={() => <HomeScreen /> }
+                options={ screenOptions('home', 'home') }
+            />
             <Tab.Screen
                 name="info"
-                children={() => <InfoScreen email={props.route.params.email}/> }
+                children={() => <InfoScreen user={props.route.params.user} /> }
                 options={ screenOptions('user', 'my info')}
             />
             <Tab.Screen
                 name="contacts"
-                children={() => <ContactsScreen email={props.route.params.email} /> }
+                children={() => <ContactsScreen user={props.route.params.user} /> }
                 options={ screenOptions('phone', 'contacts') }
             />
             <Tab.Screen
                 name="history"
-                children={() => <HistoryScreen email={props.route.params.email} /> }
+                children={() => <HistoryScreen email={props.route.params.user.email} /> }
                 options={ screenOptions('history', 'history') }
             />
-            {/* <Tab.Screen
-                name="settings"
-                children={() => <HomeScreen /> }
-                options={ screenOptions('cog', 'settings') }
-            /> */}
         </Tab.Navigator>
     )
 };

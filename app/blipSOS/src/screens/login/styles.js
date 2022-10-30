@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontWeight: 'bold',
         fontSize: 20,
-        marginTop: 5
+        marginTop: 5,
     },
     textSmall: {
         color: colors.white,
@@ -64,6 +64,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    valid: {
+        opacity: 1
+    },
+    notValid: {
+        opacity: 0.5
     }
 })
 

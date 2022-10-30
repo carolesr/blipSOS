@@ -3,14 +3,13 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import api from './../../service/api'
-import { getAllUsers, getUser } from './../../graphql/queries';
 
 import { colors } from './../../assets/colors'
 import styles from './styles'
 
 const InfoScreen = props => {
     
-    const [user, setUser] = useState({});
+    // const [user, setUser] = useState({});
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
@@ -18,31 +17,14 @@ const InfoScreen = props => {
     const [deviceId, setDeviceId] = useState('');
 
     useEffect(() => {
-        getUser(props.email) 
-    }, [])
-    
-    useEffect(() => {
-        console.log('SET USER')
+        console.log('USE EFFECT INFO SCREEN')
+        const user = props.user
         setName(user.name)
         setEmail(user.email)
         setPhone(user.phone)
         setPassword(user.password)
         setDeviceId(user.deviceId)
-    }, [user])
-
-    const getUser = email => {
-        api.getUser(email)
-        .then(result => {
-            console.log('api then query')
-            console.log(result.data.getUser)
-            setUser(result.data.getUser)
-        })
-        .catch(err => {
-            console.log('error get user')
-            console.log(err)
-    
-        });
-    }
+    }, [])
 
     const save = () => {
         const input = {

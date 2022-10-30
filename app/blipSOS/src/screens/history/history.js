@@ -15,7 +15,6 @@ const HistoryScreen = props => {
     const listRef = useRef(listSOS); 
 
     useEffect(() => {
-        console.log('SOS SCREEN ', props.email)
         getSOS(props.email) 
     }, [])
     

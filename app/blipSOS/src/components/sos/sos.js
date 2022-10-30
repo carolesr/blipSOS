@@ -37,7 +37,7 @@ const Sos = props => {
     
     const formatTime = datetime => {
         const dt = new Date(datetime)
-        return `${dt.getHours()}h${dt.getMinutes()}m${dt.getSeconds()}`
+        return `${dt.getHours()}h${dt.getMinutes()}m${dt.getSeconds()}s`
     }
 
     const formatLocation = location => {

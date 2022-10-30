@@ -1,18 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, Image, TextInput, ToastAndroid } from 'react-native';
+
+import api from './../../service/api'
 
 import { colors } from './../../assets/colors'
 import styles from './styles'
 
 const LoginScreen = props => {
 
-    useEffect(() => {
-        console.log('LOGIN SCREEN')
-    })
-
-    const [email, setEmail] = useState('email@gmail.com');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [validLogin, setValidLogin] = useState(false);    
+
+    useEffect(() => {
+        console.log('LOGIN SCREEN')
+        console.log(email != '' && password != '')
+        if (email != '' && password != '') {
+            setValidLogin(true)
+        }
+        else {
+            setValidLogin(false)
+        }
+    })
+
+    const getUser = email => {
+        api.getUser(email)
+        .then(result => {
+            if (result.data.getUser == null) {
+                ToastAndroid.show('User not found', ToastAndroid.SHORT)
+                return
+            }
+            setEmail('')
+            setPassword('')
+            props.navigation.push('tab', {user: result.data.getUser});
+        })
+        .catch(err => {
+            ToastAndroid.show('Error: ' + err, ToastAndroid.SHORT)
+            console.log(err)
+    
+        });
+    }
 
     return (
         <View style={styles.screen}>
@@ -46,18 +74,19 @@ const LoginScreen = props => {
                 </View>
 
                 <View style={styles.textContainer}>
-                    <TouchableOpacity activeOpacity={0.4}  onPress={() => {
-                            console.log('login')  
-                            props.navigation.push('tab', {email: email});
+                    {console.log('validLogin; ', validLogin)}
+                    <TouchableOpacity disabled={!validLogin} activeOpacity={0.4}  onPress={() => {
+                            console.log('login')
+                            getUser(email)
                         }}>
-                        <Text style={styles.text}>login</Text>
+                        <Text style={[styles.text, validLogin ? styles.valid : styles.notValid]}>login</Text>
                     </TouchableOpacity>
                 </View>
                 
                 <View style={styles.registerContainer}>
                     <Text style={styles.textSmall}>don't have an account yet?</Text>
                     <TouchableOpacity activeOpacity={0.4}  onPress={() => {
-                        console.log('register')
+                            console.log('register')
                             // props.navigation.push('register')
                         }}>
                         <View style={styles.textContainer}>

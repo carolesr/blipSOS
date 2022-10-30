@@ -12,6 +12,7 @@ const Header = props => {
                 <View style={styles.iconContainer}>
                     <TouchableOpacity activeOpacity={0.4}  onPress={() => {
                             console.log('home')  
+                            props.navigation.navigate('home');
                         }}>
                             <Icon name="home" size={30} color={colors.white} />
                     </TouchableOpacity>
@@ -24,7 +25,8 @@ const Header = props => {
                 </View>
                 <View style={styles.iconContainer}>
                     <TouchableOpacity activeOpacity={0.4}  onPress={() => {
-                            console.log('sign out')  
+                            console.log('sign out')
+                            props.navigation.goBack()
                         }}>
                             <Icon name="sign-out" size={30} color={colors.white} />
                     </TouchableOpacity>
