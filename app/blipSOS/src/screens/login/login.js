@@ -59,6 +59,7 @@ const LoginScreen = props => {
                         style={styles.input}
                         placeholder='email'
                         placeholderTextColor={colors.lightDarkRed}
+                        value={email}
                         onChangeText={t => {setEmail(t)}}
                     />
                 </View>
@@ -69,6 +70,7 @@ const LoginScreen = props => {
                         placeholder='password'
                         placeholderTextColor={colors.lightDarkRed}
                         secureTextEntry={true}
+                        value={password}
                         onChangeText={p => {setPassword(p)}}
                     />
                 </View>

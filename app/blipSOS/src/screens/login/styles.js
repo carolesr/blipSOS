@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         width: '100%',
         fontWeight: 'bold',
         marginLeft: 10,
-        color: colors.red
+        color: colors.darkRed
     },
     textContainer: {
         alignSelf: 'center',

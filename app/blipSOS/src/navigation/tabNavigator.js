@@ -49,7 +49,7 @@ const TabNavigator = props => {
             >
             <Tab.Screen
                 name="home"
-                children={() => <HomeScreen /> }
+                children={() => <HomeScreen user={props.route.params.user} navigation={props.navigation}/> }
                 options={ screenOptions('home', 'home') }
             />
             <Tab.Screen
