@@ -15,8 +15,10 @@ void gps_setup() {
 
 void gps_loop() {
     if (_serial_gps.available() > 0) {
-        if (_gps.encode(_serial_gps.read()))
-            displayInfo();
+        if (_gps.encode(_serial_gps.read())) {
+            gpsValid = true;
+            //displayInfo();
+        }
     }
 
     if (millis() > 5000 && _gps.charsProcessed() < 10) {
@@ -63,7 +65,6 @@ void displayInfo()
 
     Serial.print(F("Location: "));
     if (_gps.location.isValid()) {
-        gpsValid = true;
         Serial.print(_gps.location.lat(), 6);
         Serial.print(F(","));
         Serial.print(_gps.location.lng(), 6);
